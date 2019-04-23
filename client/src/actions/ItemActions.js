@@ -1,14 +1,16 @@
 import { GET_ITEMS, ADD_ITEM, DELETE_ITEM } from './Types';
 
-export const getItems = () => {
+export const getItems = (id) => {
     return {
-        type: GET_ITEMS
+        type: GET_ITEMS,
+        payload: id
     };
 };
 
-export const addItem = () => {
+export const addItem = (id) => {
     return {
-        type: ADD_ITEM
+        type: ADD_ITEM,
+        payload: id
     };
 };
 

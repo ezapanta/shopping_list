@@ -12,6 +12,7 @@ import {
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from  'react-redux';
 import { addItem } from '../actions/ItemActions';
+import uuid from 'uuid';
 
 class ItemModal extends Component {
     state = {
@@ -26,6 +27,18 @@ class ItemModal extends Component {
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        const item = {
+            id: uuid(),
+            name: this.state.name 
+        };
+        
+        this.props.addItem(item);
+        this.toggle();
+    }
+
     render() {
         return(
             <div>
@@ -65,5 +78,8 @@ class ItemModal extends Component {
     }
 }
 
-export default connect()(ItemModal);
+const mapStateToProps = state => ({
+    item: state.item
+});
+export default connect(mapStateToProps, { addItem })(ItemModal);
 
