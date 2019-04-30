@@ -10,19 +10,19 @@ import { Provider } from 'react-redux';
 import store from './Store'
 
 class App extends Component {
-  render() {
+render() {
     return (
-      <Provider store={store}>
-        <div className="App">
-          <AppNavbar />
-          <Container>
-            <ItemModal />
-            <ShoppingList />
-          </Container>
-        </div>
-      </Provider>
+        <Provider store={store}>
+            <div className="App">
+                <AppNavbar />
+                <Container>
+                    <ItemModal />
+                    <ShoppingList />
+                </Container>
+            </div>
+        </Provider>
     );
-  }
+    }
 }
 
 export default App;
