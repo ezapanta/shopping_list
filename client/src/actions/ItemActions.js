@@ -12,19 +12,27 @@ export const getItems = () => dispatch  => {
         });
 };
 
-export const addItem = (id) => {
-    return {
-        type: ADD_ITEM,
-        payload: id
-    };
+export const addItem = (item) => dispatch => {
+    dispatch(setItemsLoading());
+    axios.post('/api/items', item)
+        .then(res => {
+            return dispatch({
+                type: ADD_ITEM,
+                payload: res.data
+            })
+        });
 };
 
 
-export const deleteItem = (id) => {
-    return {
-        type: DELETE_ITEM,
-        payload: id
-    };
+export const deleteItem = (id) => dispatch => {
+    dispatch(setItemsLoading());
+    axios.delete(`/api/items/${id}`)
+        .then(res => {
+            return dispatch({
+                type: DELETE_ITEM,
+                payload: id
+            })
+        });
 };
 
 export const setItemsLoading = () => {

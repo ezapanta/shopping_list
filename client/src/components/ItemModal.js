@@ -12,7 +12,6 @@ import {
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from  'react-redux';
 import { addItem } from '../actions/ItemActions';
-import uuid from 'uuid';
 
 class ItemModal extends Component {
     state = {
@@ -31,7 +30,6 @@ class ItemModal extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const item = {
-            id: uuid(),
             name: this.state.name 
         };
         
