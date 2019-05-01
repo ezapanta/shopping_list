@@ -1,5 +1,5 @@
 # shopping_list
-A small exercise to learn the MERN stack
+A small exercise using the MERN stack
 
 This project is deployed on Heroku, and can be found here: https://dry-dusk-90408.herokuapp.com/
 
