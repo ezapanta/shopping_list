@@ -4,18 +4,15 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../actions/ItemActions';
 import PropTypes from 'prop-types';
-import uuid from 'uuid';
 
 class ShoppingList extends Component {
     constructor(props) {
         super(props);
-        this.state={ loading: true }
         this.onDeleteClick = this.onDeleteClick.bind(this);
     }
 
     componentDidMount() {
         this.props.getItems();
-        setTimeout(() => {  this.setState({ loading: false })}, 1000)
     }
     
     onDeleteClick = (id) => {
@@ -25,32 +22,28 @@ class ShoppingList extends Component {
     render() {
         const { items } = this.props.item;
 
-        if (this.state.loading) {
-            return <div>Loading....</div>; 
-        } else {
-            return(
-            <Container>
-                <ListGroup>
-                    <TransitionGroup className="shopping-list">
-                        {items.map(({_id, name}) => (
-                            <CSSTransition key={_id} timeout={1000} classNames='fade'>
-                                <ListGroupItem>
-                                    <Button
-                                        className="remove-btn"
-                                        color="danger"
-                                        size="sm"
-                                        onClick={() => {this.onDeleteClick(_id) }}>
-                                            &times;
-                                    </Button>		 
-                                        {name}
-                                </ListGroupItem>
-                            </CSSTransition>
-                        ))}
-                    </TransitionGroup>
-                </ListGroup>      
-            </Container>
-            )
-        }
+        return(
+        <Container>
+            <ListGroup>
+                <TransitionGroup className="shopping-list">
+                    {items.map(({_id, name}) => (
+                        <CSSTransition key={_id} timeout={1000} classNames='fade'>
+                            <ListGroupItem>
+                                <Button
+                                    className="remove-btn"
+                                    color="danger"
+                                    size="sm"
+                                    onClick={() => {this.onDeleteClick(_id) }}>
+                                        &times;
+                                </Button>		 
+                                    {name}
+                            </ListGroupItem>
+                        </CSSTransition>
+                    ))}
+                </TransitionGroup>
+            </ListGroup>      
+        </Container>
+        )
     }
 }
 
