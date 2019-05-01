@@ -21,12 +21,12 @@ class ShoppingList extends Component {
 
     render() {
         const { items } = this.props.item;
-        console.log(items)
+
         return(
         <Container>
             <ListGroup>
                 <TransitionGroup className="shopping-list">
-                    {this.items = items.map(({_id, name}) => (
+                    {items.map(({_id, name}) => (
                         <CSSTransition key={_id} timeout={1000} classNames='fade'>
                             <ListGroupItem>
                                 <Button
