@@ -1,4 +1,6 @@
 # shopping_list
 A small exercise to learn the MERN stack
 
-To run, ensure you install all packages via npm within the main directory, and within the home directory.
+This project is deployed on Heroku, and can be found here: https://dry-dusk-90408.herokuapp.com/
+
+To run locally, ensure you install all packages via npm within the main directory, and within the home directory.
